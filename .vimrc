@@ -64,8 +64,8 @@ let g:easytags_always_enabled = 1
 
 " racer
 set hidden
-let g:racer_cmd="/Users/joelbaker/source/rust/racer/target/release/racer"
-let $RUST_SRC_PATH="/Users/joelbaker/source/rust/rust/src/"
+let g:racer_cmd="~/source/rust/racer/target/release/racer"
+let $RUST_SRC_PATH="~/source/rust/rust/src/"
 
 " Rainbow Parentheses
 let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
