@@ -1,0 +1,35 @@
+[core]
+	editor = vim
+[color]
+    branch = auto
+	diff = auto
+	status = auto
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[alias]
+	di = difftool
+	st = status -s
+	ci = commit
+	co = checkout
+
+	#list commands
+	le  = log --oneline --decorate
+	ll  = log --pretty=format:'%C(auto)%h%C(auto)%d %Creset%s %C(green)(%ad)%C(bold blue) <%cn>' --decorate --numstat --date=relative
+	ls1 = log --pretty=format:'%C(auto)%h%C(auto)%d %Creset%s%C(bold blue) <%cn>' --decorate
+	lds = log --pretty=format:'%C(auto)%h %C(green)%ad%C(auto)%d %Creset%s%C(bold blue) <%cn>' --decorate --date=short --graph
+	ls  = log --pretty=format:'%C(auto)%h %C(auto)%d %Creset%s %C(green)(%ad)%C(bold blue) <%cn>' --decorate --date=relative
+	lc  = "!f() { git ll "$1"^.."$1"; }; f"
+	lnc = log --pretty=format:'%h %s <%cn>'
+
+	#stash list
+	sll  = stash list --pretty=format:'%C(auto)%h%C(auto)%d %Creset%s %C(green)(%ad)%C(bold blue) <%cn>' --decorate --numstat --date=relative
+[log]
+	date = local
+[push]
+	default = simple
+# Use separate file for username / github token / etc
+[include]
+	path = ~/.gitconfig.local
+
