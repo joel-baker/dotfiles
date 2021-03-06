@@ -1,6 +1,26 @@
 # ZSH Theme - Preview: http://cl.ly/350F0F0k1M2y3A2i3p1S
 
-PROMPT='%Bλ%b %{$fg[cyan]%}%B/%m/%~/%b%{$reset_color%} $(git_prompt_info)%{$reset_color%}'
+# Special characters
 
-ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[green]%}"
-ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
+() {
+  local LC_ALL="" LC_CTYPE="en_US.UTF-8"
+  SEGMENT_SEPARATOR=$'\ue0b0'
+  LAMBDA=$'\u03bb'
+}
+
+lambda() {
+	echo "$FG[220]%B$LAMBDA%b"
+}
+
+hostname() {
+	echo "%B$FG[051]/$FG[190]%m%b"
+}
+
+directory() {
+	echo "$FG[051]%B%0/%b"
+}
+
+PROMPT='$(lambda) $(hostname)$(directory)$(git_prompt_info) $reset_color'
+
+ZSH_THEME_GIT_PROMPT_PREFIX="%B$fg[green]("
+ZSH_THEME_GIT_PROMPT_SUFFIX=")$reset_color"
