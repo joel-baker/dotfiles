@@ -13,7 +13,7 @@ lambda() {
 }
 
 hostname() {
-	echo "%B$FG[051]/$FG[190]%m%b"
+	echo "%B$FG[051]/$FG[190]%m%b" | sed 's/[A-Z]/\L&/g'
 }
 
 directory() {
