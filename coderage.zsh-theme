@@ -12,6 +12,10 @@ lambda() {
 	echo "$FG[220]%B$LAMBDA%b"
 }
 
+battery() {
+	echo "$FG[220]%B[$reset_color$(battery_pct_prompt)$FG[220]%B]$reset_color"
+}
+
 hostname() {
 	echo "%B$FG[051]/$FG[111]%m%b" | sed 's/[A-Z]/\L&/g'
 }
@@ -20,7 +24,8 @@ directory() {
 	echo "$FG[051]%B%0/%b"
 }
 
-PROMPT='$(lambda) $(hostname)$(directory)$(git_prompt_info) $reset_color'
+#PROMPT='$(lambda) $(hostname)$(directory)$(git_prompt_info) $reset_color'
+PROMPT='$(battery) $(hostname)$(directory)$(git_prompt_info) $reset_color'
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%B$fg[green]("
 ZSH_THEME_GIT_PROMPT_SUFFIX=")$reset_color"
