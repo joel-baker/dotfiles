@@ -9,7 +9,7 @@
 }
 
 lambda() {
-	echo "$FG[220]%B$LAMBDA%b"
+	echo "$fg[220]%b$lambda%b"
 }
 
 battery() {
@@ -17,7 +17,7 @@ battery() {
 }
 
 hostname() {
-	echo "%B$FG[051]/$FG[111]%m%b" | sed 's/[A-Z]/\L&/g'
+	echo "$FG[051]/$FG[111]%m%b" | sed 's/[A-Z]/\L&/g'
 }
 
 directory() {

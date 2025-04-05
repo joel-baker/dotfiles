@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/$USER/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -87,7 +87,7 @@ source $ZSH/oh-my-zsh.sh
 # else
 #   export EDITOR='mvim'
 # fi
-export EDITOR='vim'
+export EDITOR='hx'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -108,10 +108,11 @@ export LS_COLORS
 
 # Run ssh-agent if it's not already started
 # see: wiki.archlinux.org/index.php/SSH_keys#SSH_agents
-if ! pgrep -u "$USER" ssh-agent > /dev/null; then
-	ssh-agent -t 1h > "$XDG_RUNTIME_DIR/ssh-agent.env"
+if [[ "$XDG_RUNTIME_DIR" ]]; then
+	if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+		ssh-agent -t 1h > "$XDG_RUNTIME_DIR/ssh-agent.env"
+	fi
+	if [[ ! "$SSH_AUTH_SOCK" ]]; then
+		source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
+	fi
 fi
-if [[ ! "$SSH_AUTH_SOCK" ]]; then
-	source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
-fi
-
